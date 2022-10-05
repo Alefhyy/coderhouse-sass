@@ -1,0 +1,61 @@
+@import "./variaveis";
+@import "./reset";
+
+@mixin flexCenter {
+    display: block;
+    margin: 0;
+    margin: auto;
+}
+@mixin flexCenterText {
+    text-align: center
+}
+@mixin Cards {
+    width: 300px;
+    border-radius: 8px;
+    background-color: lighten($cards-color, 15%);
+    padding: 10px;
+}
+@mixin CardPai {
+    display: flex;
+    justify-content: center;
+    gap: 42px;
+}
+
+@function weight ($key) {
+    @return map-get($font-weight, $key);
+}
+
+
+body {
+    background-color: lighten($secundary-color, 35%);
+    .container__h1 {
+        @include flexCenterText;
+        margin-bottom: 150px;
+        font-size: 50px;
+    }
+    .container__cards {
+        @include CardPai;
+        .container__cards--card {
+            @include Cards;
+            h2 {
+                font-weight: weight(bold);
+                @include flexCenterText;
+            }
+            p {
+                @include flexCenterText;
+                font-weight: weight(bold);
+            }
+            button {
+                @include flexCenter;
+                cursor:pointer;
+                border:none;
+                color: $primary-color;
+                background-color: $tertiary-color;
+                padding: 10px;
+                border-radius: 10px;
+                text-decoration: none;
+                font-weight: weight(bold);
+            }
+        }
+    }
+}
